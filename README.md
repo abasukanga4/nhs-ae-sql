@@ -107,3 +107,6 @@ local. Data © NHS England, licensed under the Open Government Licence;
 retrieved 2026-07-08 from the
 [A&E waiting times and activity](https://www.england.nhs.uk/statistics/statistical-work-areas/ae-waiting-times-and-activity/)
 statistical work area.
+
+
+**Staging note:** the raw layer ingests every column NHS England publishes (including booked-appointment and emergency-admission counts) for fidelity; the clean layer deliberately consumes only the attendance and 4-hour-breach subset used by the analysis.

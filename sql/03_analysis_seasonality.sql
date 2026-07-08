@@ -82,7 +82,8 @@ SELECT
     winter_season,
     round(yoy_all   * 100, 2) AS yoy_all_pp,
     round(yoy_type1 * 100, 2) AS yoy_type1_pp,
-    round(perf_all_pctile, 3) AS perf_all_pctile
+    round(perf_all_pctile, 3) AS perf_all_pctile,
+    round(next_month_delta_all * 100, 2) AS next_month_delta_pp
 FROM traced
 ORDER BY period_month;
 
