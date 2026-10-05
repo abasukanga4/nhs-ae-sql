@@ -1,0 +1,20 @@
+{
+  "status": "Build checks only; see validation.json for native review evidence",
+  "provider_rows": 4758,
+  "provider_month_key_unique": true,
+  "reconciliation": {
+    "window": "2025-04 to 2026-03",
+    "type1_attendances": 16744864,
+    "type1_within_four_hours": 0.605564727190379
+  },
+  "worksheets": [
+    "Monthly performance",
+    "Monthly attendances",
+    "Provider comparison"
+  ],
+  "parameters": [
+    "Provider code",
+    "Department type",
+    "Reporting window"
+  ]
+}

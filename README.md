@@ -10,7 +10,7 @@ This independent portfolio study uses NHS England's **public, aggregate monthly 
 
 ![Hospital performance dashboard](docs/dashboard.png)
 
-**[Findings brief](MEMO.md) · [Metric definitions and validation](docs/METHODS.md) · [Tableau guide](docs/TABLEAU.md) · [Two-minute walkthrough](docs/WALKTHROUGH.md)**
+**[Download native Tableau workbook](bi/Hospital%20Performance%20Explorer.twbx) · [Findings brief](MEMO.md) · [Metric definitions and validation](docs/METHODS.md) · [Tableau guide](docs/TABLEAU.md) · [Two-minute walkthrough](docs/WALKTHROUGH.md)**
 
 ## Explore it
 
@@ -50,10 +50,10 @@ These are descriptive observations, not proof that an intervention worked. The [
 | Reconcile published outputs | Six provider-level count measures reconcile with England totals in every month: **144 checks**. |
 | Calculate defensible KPIs | SQL derives rates from summed counts, matches calendar months for year-on-year comparisons and handles zero denominators. |
 | Produce useful comparisons | Complete-year and activity rules, latest organisation names, name-change flags and explicit interpretation limits. |
-| Deliver a report | Filterable dashboard, CSV exports, an operational brief and Tableau calculation instructions. |
+| Deliver a report | Streamlit dashboard, native Tableau workbook with an embedded Hyper extract, CSV exports and an operational brief. |
 | Maintain the work | Automated tests, continuous integration and a previous database preserved when a new build fails. |
 
-The dashboard uses **Streamlit and Plotly**. The Tableau deliverable is currently an export dataset and build guide; a native Tableau workbook is not included.
+The web dashboard uses **Streamlit and Plotly**. A **native Tableau packaged workbook** is also included with three reporting sheets and the public extract. Its charts were opened in Tableau Public 2026.2.3; the [Tableau guide](docs/TABLEAU.md#reconciliation-and-review) distinguishes completed data/render checks from the remaining interaction review.
 
 ## Rebuild from official sources
 
@@ -83,6 +83,8 @@ run_analysis.py             Reproducible exports, chart and findings
 data/source_manifest.json   Official source URLs and hashes
 data/demo/                  Public aggregate snapshot used by the dashboard
 reports/                    Quality report, findings and provider comparison
+bi/                         Native Tableau workbook, packaged extract and review record
+scripts/                    Rebuild the public Hyper extract and workbook
 docs/                       Methods, Tableau guide and walkthrough
 tests/                      Failure cases, metric behaviour and app smoke tests
 ```

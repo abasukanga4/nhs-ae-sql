@@ -1,0 +1,570 @@
+<?xml version='1.0' encoding='utf-8'?>
+<workbook original-version="10.5" source-build="10.5.0" source-platform="mac" version="10.5">
+  <datasources>
+    <datasource name="Parameters" inline="true" hasconnection="false" version="10.5">
+      <column name="[Provider]" caption="Provider code" datatype="string" role="measure" type="nominal" param-domain-type="list" value="&quot;All providers&quot;">
+        <calculation class="tableau" formula="&quot;All providers&quot;" />
+        <members>
+          <member value="&quot;All providers&quot;" />
+          <member value="&quot;8J094&quot;" />
+          <member value="&quot;A5D4Q&quot;" />
+          <member value="&quot;AAH&quot;" />
+          <member value="&quot;ACH01&quot;" />
+          <member value="&quot;AD913&quot;" />
+          <member value="&quot;AJN&quot;" />
+          <member value="&quot;AQM01&quot;" />
+          <member value="&quot;AQN04&quot;" />
+          <member value="&quot;ARN03&quot;" />
+          <member value="&quot;AXG&quot;" />
+          <member value="&quot;C82009&quot;" />
+          <member value="&quot;C82038&quot;" />
+          <member value="&quot;C83023&quot;" />
+          <member value="&quot;DJV01&quot;" />
+          <member value="&quot;DT301&quot;" />
+          <member value="&quot;G0Q0L&quot;" />
+          <member value="&quot;G3P9C&quot;" />
+          <member value="&quot;K6K0R&quot;" />
+          <member value="&quot;L83087&quot;" />
+          <member value="&quot;NDJ&quot;" />
+          <member value="&quot;NL7&quot;" />
+          <member value="&quot;NLX&quot;" />
+          <member value="&quot;NNF09&quot;" />
+          <member value="&quot;NNF16&quot;" />
+          <member value="&quot;NNF94&quot;" />
+          <member value="&quot;NNFA7&quot;" />
+          <member value="&quot;NNJ&quot;" />
+          <member value="&quot;NNJ07&quot;" />
+          <member value="&quot;NNJ0H&quot;" />
+          <member value="&quot;NNJ10&quot;" />
+          <member value="&quot;NNJ11&quot;" />
+          <member value="&quot;NNJ12&quot;" />
+          <member value="&quot;NNJ13&quot;" />
+          <member value="&quot;NNJ14&quot;" />
+          <member value="&quot;NNJ15&quot;" />
+          <member value="&quot;NQT1I&quot;" />
+          <member value="&quot;NQT51&quot;" />
+          <member value="&quot;NQT5F&quot;" />
+          <member value="&quot;NQT5H&quot;" />
+          <member value="&quot;NQTE4&quot;" />
+          <member value="&quot;NR3&quot;" />
+          <member value="&quot;NTP11&quot;" />
+          <member value="&quot;NTPAD&quot;" />
+          <member value="&quot;NTV0B&quot;" />
+          <member value="&quot;NTV0W&quot;" />
+          <member value="&quot;NV693&quot;" />
+          <member value="&quot;NVE43&quot;" />
+          <member value="&quot;R0A&quot;" />
+          <member value="&quot;R0B&quot;" />
+          <member value="&quot;R0D&quot;" />
+          <member value="&quot;R1D&quot;" />
+          <member value="&quot;R1F&quot;" />
+          <member value="&quot;R1H&quot;" />
+          <member value="&quot;R1K&quot;" />
+          <member value="&quot;RA2&quot;" />
+          <member value="&quot;RA7&quot;" />
+          <member value="&quot;RA9&quot;" />
+          <member value="&quot;RAE&quot;" />
+          <member value="&quot;RAJ&quot;" />
+          <member value="&quot;RAL&quot;" />
+          <member value="&quot;RAN&quot;" />
+          <member value="&quot;RAP&quot;" />
+          <member value="&quot;RAS&quot;" />
+          <member value="&quot;RAT&quot;" />
+          <member value="&quot;RAX&quot;" />
+          <member value="&quot;RBD&quot;" />
+          <member value="&quot;RBK&quot;" />
+          <member value="&quot;RBL&quot;" />
+          <member value="&quot;RBN&quot;" />
+          <member value="&quot;RBQ&quot;" />
+          <member value="&quot;RBS&quot;" />
+          <member value="&quot;RBT&quot;" />
+          <member value="&quot;RBV&quot;" />
+          <member value="&quot;RC9&quot;" />
+          <member value="&quot;RCB&quot;" />
+          <member value="&quot;RCD&quot;" />
+          <member value="&quot;RCF&quot;" />
+          <member value="&quot;RCU&quot;" />
+          <member value="&quot;RCX&quot;" />
+          <member value="&quot;RD1&quot;" />
+          <member value="&quot;RD8&quot;" />
+          <member value="&quot;RDE&quot;" />
+          <member value="&quot;RDR&quot;" />
+          <member value="&quot;RDU&quot;" />
+          <member value="&quot;RDY&quot;" />
+          <member value="&quot;REF&quot;" />
+          <member value="&quot;REM&quot;" />
+          <member value="&quot;REP&quot;" />
+          <member value="&quot;RET&quot;" />
+          <member value="&quot;RF4&quot;" />
+          <member value="&quot;RFF&quot;" />
+          <member value="&quot;RFR&quot;" />
+          <member value="&quot;RFS&quot;" />
+          <member value="&quot;RGN&quot;" />
+          <member value="&quot;RGP&quot;" />
+          <member value="&quot;RGR&quot;" />
+          <member value="&quot;RGT&quot;" />
+          <member value="&quot;RH5&quot;" />
+          <member value="&quot;RH8&quot;" />
+          <member value="&quot;RHM&quot;" />
+          <member value="&quot;RHQ&quot;" />
+          <member value="&quot;RHU&quot;" />
+          <member value="&quot;RHW&quot;" />
+          <member value="&quot;RJ1&quot;" />
+          <member value="&quot;RJ2&quot;" />
+          <member value="&quot;RJ6&quot;" />
+          <member value="&quot;RJ7&quot;" />
+          <member value="&quot;RJ8&quot;" />
+          <member value="&quot;RJC&quot;" />
+          <member value="&quot;RJE&quot;" />
+          <member value="&quot;RJL&quot;" />
+          <member value="&quot;RJN&quot;" />
+          <member value="&quot;RJR&quot;" />
+          <member value="&quot;RJZ&quot;" />
+          <member value="&quot;RK5&quot;" />
+          <member value="&quot;RK9&quot;" />
+          <member value="&quot;RKB&quot;" />
+          <member value="&quot;RKE&quot;" />
+          <member value="&quot;RL1&quot;" />
+          <member value="&quot;RL4&quot;" />
+          <member value="&quot;RLQ&quot;" />
+          <member value="&quot;RLT&quot;" />
+          <member value="&quot;RM1&quot;" />
+          <member value="&quot;RM3&quot;" />
+          <member value="&quot;RMC&quot;" />
+          <member value="&quot;RMP&quot;" />
+          <member value="&quot;RN3&quot;" />
+          <member value="&quot;RN5&quot;" />
+          <member value="&quot;RN7&quot;" />
+          <member value="&quot;RNA&quot;" />
+          <member value="&quot;RNN&quot;" />
+          <member value="&quot;RNQ&quot;" />
+          <member value="&quot;RNS&quot;" />
+          <member value="&quot;RNU&quot;" />
+          <member value="&quot;RNZ&quot;" />
+          <member value="&quot;RP5&quot;" />
+          <member value="&quot;RP6&quot;" />
+          <member value="&quot;RPA&quot;" />
+          <member value="&quot;RPC&quot;" />
+          <member value="&quot;RQ3&quot;" />
+          <member value="&quot;RQM&quot;" />
+          <member value="&quot;RQW&quot;" />
+          <member value="&quot;RQX&quot;" />
+          <member value="&quot;RR7&quot;" />
+          <member value="&quot;RR8&quot;" />
+          <member value="&quot;RRF&quot;" />
+          <member value="&quot;RRK&quot;" />
+          <member value="&quot;RRV&quot;" />
+          <member value="&quot;RTD&quot;" />
+          <member value="&quot;RTE&quot;" />
+          <member value="&quot;RTF&quot;" />
+          <member value="&quot;RTG&quot;" />
+          <member value="&quot;RTH&quot;" />
+          <member value="&quot;RTK&quot;" />
+          <member value="&quot;RTP&quot;" />
+          <member value="&quot;RTQ&quot;" />
+          <member value="&quot;RTR&quot;" />
+          <member value="&quot;RTX&quot;" />
+          <member value="&quot;RV9&quot;" />
+          <member value="&quot;RVJ&quot;" />
+          <member value="&quot;RVR&quot;" />
+          <member value="&quot;RVV&quot;" />
+          <member value="&quot;RVW&quot;" />
+          <member value="&quot;RW1&quot;" />
+          <member value="&quot;RW4&quot;" />
+          <member value="&quot;RWA&quot;" />
+          <member value="&quot;RWD&quot;" />
+          <member value="&quot;RWE&quot;" />
+          <member value="&quot;RWF&quot;" />
+          <member value="&quot;RWG&quot;" />
+          <member value="&quot;RWH&quot;" />
+          <member value="&quot;RWJ&quot;" />
+          <member value="&quot;RWP&quot;" />
+          <member value="&quot;RWW&quot;" />
+          <member value="&quot;RWX&quot;" />
+          <member value="&quot;RWY&quot;" />
+          <member value="&quot;RX1&quot;" />
+          <member value="&quot;RXC&quot;" />
+          <member value="&quot;RXF&quot;" />
+          <member value="&quot;RXG&quot;" />
+          <member value="&quot;RXK&quot;" />
+          <member value="&quot;RXL&quot;" />
+          <member value="&quot;RXN&quot;" />
+          <member value="&quot;RXP&quot;" />
+          <member value="&quot;RXQ&quot;" />
+          <member value="&quot;RXR&quot;" />
+          <member value="&quot;RXW&quot;" />
+          <member value="&quot;RY2&quot;" />
+          <member value="&quot;RY4&quot;" />
+          <member value="&quot;RY5&quot;" />
+          <member value="&quot;RY7&quot;" />
+          <member value="&quot;RY8&quot;" />
+          <member value="&quot;RYF&quot;" />
+          <member value="&quot;RYG&quot;" />
+          <member value="&quot;RYJ&quot;" />
+          <member value="&quot;RYR&quot;" />
+          <member value="&quot;RYX&quot;" />
+          <member value="&quot;RYY&quot;" />
+          <member value="&quot;Y00751&quot;" />
+          <member value="&quot;Y02147&quot;" />
+          <member value="&quot;Y02428&quot;" />
+          <member value="&quot;Y02532&quot;" />
+          <member value="&quot;Y02615&quot;" />
+          <member value="&quot;Y02676&quot;" />
+          <member value="&quot;Y03007&quot;" />
+          <member value="&quot;Y03218&quot;" />
+          <member value="&quot;Y07709&quot;" />
+        </members>
+      </column>
+      <column name="[Department]" caption="Department type" datatype="string" role="measure" type="nominal" param-domain-type="list" value="&quot;Type 1&quot;">
+        <calculation class="tableau" formula="&quot;Type 1&quot;" />
+        <members>
+          <member value="&quot;Type 1&quot;" />
+          <member value="&quot;All types&quot;" />
+        </members>
+      </column>
+      <column name="[Window]" caption="Reporting window" datatype="string" role="measure" type="nominal" param-domain-type="list" value="&quot;Latest 12 months&quot;">
+        <calculation class="tableau" formula="&quot;Latest 12 months&quot;" />
+        <members>
+          <member value="&quot;Full 24 months&quot;" />
+          <member value="&quot;Latest 12 months&quot;" />
+        </members>
+      </column>
+    </datasource>
+    <datasource name="provider_data" caption="NHS England provider-months" inline="true" version="10.5">
+      <connection class="textscan" directory="Data" filename="providers.csv" password="" server="">
+        <relation name="providers" table="[providers.csv]" type="table">
+          <columns character-set="UTF-8" header="yes" locale="en_GB" separator=",">
+            <column name="period_month" datatype="date" ordinal="0" />
+            <column name="org_code" datatype="string" ordinal="1" />
+            <column name="region" datatype="string" ordinal="2" />
+            <column name="org_name" datatype="string" ordinal="3" />
+            <column name="att_type1" datatype="integer" ordinal="4" />
+            <column name="att_all" datatype="integer" ordinal="5" />
+            <column name="over4hr_type1" datatype="integer" ordinal="6" />
+            <column name="over4hr_all" datatype="integer" ordinal="7" />
+            <column name="waited_4_12hr_dta" datatype="integer" ordinal="8" />
+            <column name="waited_12hr_dta" datatype="integer" ordinal="9" />
+            <column name="perf_all" datatype="real" ordinal="10" />
+            <column name="perf_type1" datatype="real" ordinal="11" />
+          </columns>
+        </relation>
+      </connection>
+      <column name="[period_month]" caption="Period Month" datatype="date" role="dimension" type="ordinal" default-format="dmmm yy" />
+      <column name="[org_code]" caption="Org Code" datatype="string" role="dimension" type="nominal" />
+      <column name="[region]" caption="Region" datatype="string" role="dimension" type="nominal" />
+      <column name="[org_name]" caption="Org Name" datatype="string" role="dimension" type="nominal" />
+      <column name="[att_type1]" caption="Att Type1" datatype="integer" role="measure" type="quantitative" />
+      <column name="[att_all]" caption="Att All" datatype="integer" role="measure" type="quantitative" />
+      <column name="[over4hr_type1]" caption="Over4Hr Type1" datatype="integer" role="measure" type="quantitative" />
+      <column name="[over4hr_all]" caption="Over4Hr All" datatype="integer" role="measure" type="quantitative" />
+      <column name="[waited_4_12hr_dta]" caption="Waited 4 12Hr Dta" datatype="integer" role="measure" type="quantitative" />
+      <column name="[waited_12hr_dta]" caption="Waited 12Hr Dta" datatype="integer" role="measure" type="quantitative" />
+      <column name="[perf_all]" caption="Perf All" datatype="real" role="measure" type="quantitative" />
+      <column name="[perf_type1]" caption="Perf Type1" datatype="real" role="measure" type="quantitative" />
+      <column name="[Selected attendances]" datatype="real" role="measure" type="quantitative">
+        <calculation class="tableau" formula="IF [Parameters].[Department] = 'Type 1' THEN [att_type1] ELSE [att_all] END" />
+      </column>
+      <column name="[Selected over four hours]" datatype="real" role="measure" type="quantitative">
+        <calculation class="tableau" formula="IF [Parameters].[Department] = 'Type 1' THEN [over4hr_type1] ELSE [over4hr_all] END" />
+      </column>
+      <column name="[Within four hours]" datatype="real" role="measure" type="quantitative" default-format="p0.0%">
+        <calculation class="tableau" formula="IF SUM([Selected attendances]) &gt; 0 THEN 1 - SUM([Selected over four hours]) / SUM([Selected attendances]) END" />
+      </column>
+      <column name="[Provider selected]" datatype="boolean" role="dimension" type="nominal">
+        <calculation class="tableau" formula="([Parameters].[Provider] = 'All providers' OR [org_code] = [Parameters].[Provider]) AND [Selected attendances] &gt; 0 AND ([Parameters].[Window] = 'Full 24 months' OR [period_month] &gt;= #2025-04-01#)" />
+      </column>
+      <extract count="4758" enabled="true" units="records">
+        <connection class="hyper" dbname="Data/Extracts/providers.hyper" schema="Extract" tablename="Extract" access-mode="readonly" authentication="auth-none">
+          <relation name="Extract" table="[Extract].[Extract]" type="table" />
+        </connection>
+      </extract>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name="Monthly performance">
+      <table>
+        <view>
+          <datasources>
+            <datasource name="provider_data" caption="NHS England provider-months" />
+          </datasources>
+          <datasource-dependencies datasource="provider_data">
+            <column name="[period_month]" caption="Period Month" datatype="date" role="dimension" type="ordinal" default-format="dmmm yy" />
+            <column name="[org_code]" caption="Org Code" datatype="string" role="dimension" type="nominal" />
+            <column name="[region]" caption="Region" datatype="string" role="dimension" type="nominal" />
+            <column name="[org_name]" caption="Org Name" datatype="string" role="dimension" type="nominal" />
+            <column name="[att_type1]" caption="Att Type1" datatype="integer" role="measure" type="quantitative" />
+            <column name="[att_all]" caption="Att All" datatype="integer" role="measure" type="quantitative" />
+            <column name="[over4hr_type1]" caption="Over4Hr Type1" datatype="integer" role="measure" type="quantitative" />
+            <column name="[over4hr_all]" caption="Over4Hr All" datatype="integer" role="measure" type="quantitative" />
+            <column name="[waited_4_12hr_dta]" caption="Waited 4 12Hr Dta" datatype="integer" role="measure" type="quantitative" />
+            <column name="[waited_12hr_dta]" caption="Waited 12Hr Dta" datatype="integer" role="measure" type="quantitative" />
+            <column name="[perf_all]" caption="Perf All" datatype="real" role="measure" type="quantitative" />
+            <column name="[perf_type1]" caption="Perf Type1" datatype="real" role="measure" type="quantitative" />
+            <column name="[Selected attendances]" datatype="real" role="measure" type="quantitative">
+              <calculation class="tableau" formula="IF [Parameters].[Department] = 'Type 1' THEN [att_type1] ELSE [att_all] END" />
+            </column>
+            <column name="[Selected over four hours]" datatype="real" role="measure" type="quantitative">
+              <calculation class="tableau" formula="IF [Parameters].[Department] = 'Type 1' THEN [over4hr_type1] ELSE [over4hr_all] END" />
+            </column>
+            <column name="[Within four hours]" datatype="real" role="measure" type="quantitative" default-format="p0.0%">
+              <calculation class="tableau" formula="IF SUM([Selected attendances]) &gt; 0 THEN 1 - SUM([Selected over four hours]) / SUM([Selected attendances]) END" />
+            </column>
+            <column name="[Provider selected]" datatype="boolean" role="dimension" type="nominal">
+              <calculation class="tableau" formula="([Parameters].[Provider] = 'All providers' OR [org_code] = [Parameters].[Provider]) AND [Selected attendances] &gt; 0 AND ([Parameters].[Window] = 'Full 24 months' OR [period_month] &gt;= #2025-04-01#)" />
+            </column>
+            <column-instance column="[period_month]" derivation="None" name="[none:period_month:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[Within four hours]" derivation="User" name="[usr:Within four hours:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[Provider selected]" derivation="None" name="[none:Provider selected:nk]" pivot="key" type="nominal" />
+          </datasource-dependencies>
+          <filter class="categorical" column="[provider_data].[none:Provider selected:nk]">
+            <groupfilter function="member" level="[none:Provider selected:nk]" member="true" />
+          </filter>
+          <aggregation value="true" />
+        </view>
+        <style>
+          <style-rule element="mark">
+            <format attr="mark-color" value="#147d92" />
+          </style-rule>
+        </style>
+        <panes>
+          <pane>
+            <view>
+              <breakdown value="auto" />
+            </view>
+            <mark class="Line" />
+          </pane>
+        </panes>
+        <rows>[provider_data].[usr:Within four hours:qk]</rows>
+        <cols>[provider_data].[none:period_month:qk]</cols>
+      </table>
+    </worksheet>
+    <worksheet name="Monthly attendances">
+      <table>
+        <view>
+          <datasources>
+            <datasource name="provider_data" caption="NHS England provider-months" />
+          </datasources>
+          <datasource-dependencies datasource="provider_data">
+            <column name="[period_month]" caption="Period Month" datatype="date" role="dimension" type="ordinal" default-format="dmmm yy" />
+            <column name="[org_code]" caption="Org Code" datatype="string" role="dimension" type="nominal" />
+            <column name="[region]" caption="Region" datatype="string" role="dimension" type="nominal" />
+            <column name="[org_name]" caption="Org Name" datatype="string" role="dimension" type="nominal" />
+            <column name="[att_type1]" caption="Att Type1" datatype="integer" role="measure" type="quantitative" />
+            <column name="[att_all]" caption="Att All" datatype="integer" role="measure" type="quantitative" />
+            <column name="[over4hr_type1]" caption="Over4Hr Type1" datatype="integer" role="measure" type="quantitative" />
+            <column name="[over4hr_all]" caption="Over4Hr All" datatype="integer" role="measure" type="quantitative" />
+            <column name="[waited_4_12hr_dta]" caption="Waited 4 12Hr Dta" datatype="integer" role="measure" type="quantitative" />
+            <column name="[waited_12hr_dta]" caption="Waited 12Hr Dta" datatype="integer" role="measure" type="quantitative" />
+            <column name="[perf_all]" caption="Perf All" datatype="real" role="measure" type="quantitative" />
+            <column name="[perf_type1]" caption="Perf Type1" datatype="real" role="measure" type="quantitative" />
+            <column name="[Selected attendances]" datatype="real" role="measure" type="quantitative">
+              <calculation class="tableau" formula="IF [Parameters].[Department] = 'Type 1' THEN [att_type1] ELSE [att_all] END" />
+            </column>
+            <column name="[Selected over four hours]" datatype="real" role="measure" type="quantitative">
+              <calculation class="tableau" formula="IF [Parameters].[Department] = 'Type 1' THEN [over4hr_type1] ELSE [over4hr_all] END" />
+            </column>
+            <column name="[Within four hours]" datatype="real" role="measure" type="quantitative" default-format="p0.0%">
+              <calculation class="tableau" formula="IF SUM([Selected attendances]) &gt; 0 THEN 1 - SUM([Selected over four hours]) / SUM([Selected attendances]) END" />
+            </column>
+            <column name="[Provider selected]" datatype="boolean" role="dimension" type="nominal">
+              <calculation class="tableau" formula="([Parameters].[Provider] = 'All providers' OR [org_code] = [Parameters].[Provider]) AND [Selected attendances] &gt; 0 AND ([Parameters].[Window] = 'Full 24 months' OR [period_month] &gt;= #2025-04-01#)" />
+            </column>
+            <column-instance column="[period_month]" derivation="None" name="[none:period_month:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[Selected attendances]" derivation="Sum" name="[sum:Selected attendances:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[Provider selected]" derivation="None" name="[none:Provider selected:nk]" pivot="key" type="nominal" />
+          </datasource-dependencies>
+          <filter class="categorical" column="[provider_data].[none:Provider selected:nk]">
+            <groupfilter function="member" level="[none:Provider selected:nk]" member="true" />
+          </filter>
+          <aggregation value="true" />
+        </view>
+        <style>
+          <style-rule element="mark">
+            <format attr="mark-color" value="#147d92" />
+          </style-rule>
+        </style>
+        <panes>
+          <pane>
+            <view>
+              <breakdown value="auto" />
+            </view>
+            <mark class="Bar" />
+          </pane>
+        </panes>
+        <rows>[provider_data].[sum:Selected attendances:qk]</rows>
+        <cols>[provider_data].[none:period_month:qk]</cols>
+      </table>
+    </worksheet>
+    <worksheet name="Provider comparison">
+      <table>
+        <view>
+          <datasources>
+            <datasource name="provider_data" caption="NHS England provider-months" />
+          </datasources>
+          <datasource-dependencies datasource="provider_data">
+            <column name="[period_month]" caption="Period Month" datatype="date" role="dimension" type="ordinal" default-format="dmmm yy" />
+            <column name="[org_code]" caption="Org Code" datatype="string" role="dimension" type="nominal" />
+            <column name="[region]" caption="Region" datatype="string" role="dimension" type="nominal" />
+            <column name="[org_name]" caption="Org Name" datatype="string" role="dimension" type="nominal" />
+            <column name="[att_type1]" caption="Att Type1" datatype="integer" role="measure" type="quantitative" />
+            <column name="[att_all]" caption="Att All" datatype="integer" role="measure" type="quantitative" />
+            <column name="[over4hr_type1]" caption="Over4Hr Type1" datatype="integer" role="measure" type="quantitative" />
+            <column name="[over4hr_all]" caption="Over4Hr All" datatype="integer" role="measure" type="quantitative" />
+            <column name="[waited_4_12hr_dta]" caption="Waited 4 12Hr Dta" datatype="integer" role="measure" type="quantitative" />
+            <column name="[waited_12hr_dta]" caption="Waited 12Hr Dta" datatype="integer" role="measure" type="quantitative" />
+            <column name="[perf_all]" caption="Perf All" datatype="real" role="measure" type="quantitative" />
+            <column name="[perf_type1]" caption="Perf Type1" datatype="real" role="measure" type="quantitative" />
+            <column name="[Selected attendances]" datatype="real" role="measure" type="quantitative">
+              <calculation class="tableau" formula="IF [Parameters].[Department] = 'Type 1' THEN [att_type1] ELSE [att_all] END" />
+            </column>
+            <column name="[Selected over four hours]" datatype="real" role="measure" type="quantitative">
+              <calculation class="tableau" formula="IF [Parameters].[Department] = 'Type 1' THEN [over4hr_type1] ELSE [over4hr_all] END" />
+            </column>
+            <column name="[Within four hours]" datatype="real" role="measure" type="quantitative" default-format="p0.0%">
+              <calculation class="tableau" formula="IF SUM([Selected attendances]) &gt; 0 THEN 1 - SUM([Selected over four hours]) / SUM([Selected attendances]) END" />
+            </column>
+            <column name="[Provider selected]" datatype="boolean" role="dimension" type="nominal">
+              <calculation class="tableau" formula="([Parameters].[Provider] = 'All providers' OR [org_code] = [Parameters].[Provider]) AND [Selected attendances] &gt; 0 AND ([Parameters].[Window] = 'Full 24 months' OR [period_month] &gt;= #2025-04-01#)" />
+            </column>
+            <column-instance column="[org_code]" derivation="None" name="[none:org_code:nk]" pivot="key" type="nominal" />
+            <column-instance column="[Within four hours]" derivation="User" name="[usr:Within four hours:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[Provider selected]" derivation="None" name="[none:Provider selected:nk]" pivot="key" type="nominal" />
+          </datasource-dependencies>
+          <filter class="categorical" column="[provider_data].[none:Provider selected:nk]">
+            <groupfilter function="member" level="[none:Provider selected:nk]" member="true" />
+          </filter>
+          <aggregation value="true" />
+        </view>
+        <style>
+          <style-rule element="mark">
+            <format attr="mark-color" value="#147d92" />
+          </style-rule>
+        </style>
+        <panes>
+          <pane>
+            <view>
+              <breakdown value="auto" />
+            </view>
+            <mark class="Bar" />
+          </pane>
+        </panes>
+        <rows>[provider_data].[none:org_code:nk]</rows>
+        <cols>[provider_data].[usr:Within four hours:qk]</cols>
+      </table>
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard name="Hospital performance">
+      <style />
+      <size sizing-mode="fixed" minwidth="1200" maxwidth="1200" minheight="760" maxheight="760" />
+      <zones>
+        <zone id="1" type="text" x="2000" y="1500" w="95000" h="10000">
+          <formatted-text>
+            <run bold="true" fontsize="17">HOSPITAL PERFORMANCE EXPLORER
+NHS England public aggregates · April 2024–March 2026</run>
+          </formatted-text>
+        </zone>
+        <zone id="2" name="Monthly performance" x="2000" y="25000" w="55000" h="27000" />
+        <zone id="3" name="Monthly attendances" x="2000" y="55000" w="55000" h="27000" />
+        <zone id="4" name="Provider comparison" x="60000" y="25000" w="38000" h="57000" />
+        <zone id="20" type="paramctrl" param="[Parameters].[Provider]" mode="compact" x="2000" y="14500" w="30000" h="8500" />
+        <zone id="21" type="paramctrl" param="[Parameters].[Department]" mode="compact" x="34000" y="14500" w="30000" h="8500" />
+        <zone id="22" type="paramctrl" param="[Parameters].[Window]" mode="compact" x="66000" y="14500" w="30000" h="8500" />
+        <zone id="8" type="text" x="2000" y="86500" w="96000" h="10000">
+          <formatted-text>
+            <run fontsize="11">Four hours: arrival to admission, transfer or discharge. Rates are calculated from summed counts. Provider organisations can cover multiple sites. Historical, descriptive comparisons; no case-mix adjustment. Use the controls above. Only providers with activity in the selected department are included. Provider codes identify organisations, not individual hospitals.</run>
+          </formatted-text>
+        </zone>
+      </zones>
+    </dashboard>
+  </dashboards>
+  <windows source-height="30">
+    <window class="worksheet" name="Monthly performance">
+      <cards>
+        <edge name="left">
+          <strip size="190">
+            <card type="pages" />
+            <card type="filters" />
+            <card type="marks" />
+            <card type="parameter" param="[Parameters].[Provider]" />
+            <card type="parameter" param="[Parameters].[Department]" />
+            <card type="parameter" param="[Parameters].[Window]" />
+          </strip>
+        </edge>
+        <edge name="top">
+          <strip size="30">
+            <card type="columns" />
+          </strip>
+          <strip size="30">
+            <card type="rows" />
+          </strip>
+          <strip size="30">
+            <card type="title" />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint />
+    </window>
+    <window class="worksheet" name="Monthly attendances">
+      <cards>
+        <edge name="left">
+          <strip size="190">
+            <card type="pages" />
+            <card type="filters" />
+            <card type="marks" />
+            <card type="parameter" param="[Parameters].[Provider]" />
+            <card type="parameter" param="[Parameters].[Department]" />
+            <card type="parameter" param="[Parameters].[Window]" />
+          </strip>
+        </edge>
+        <edge name="top">
+          <strip size="30">
+            <card type="columns" />
+          </strip>
+          <strip size="30">
+            <card type="rows" />
+          </strip>
+          <strip size="30">
+            <card type="title" />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint />
+    </window>
+    <window class="worksheet" name="Provider comparison">
+      <cards>
+        <edge name="left">
+          <strip size="190">
+            <card type="pages" />
+            <card type="filters" />
+            <card type="marks" />
+            <card type="parameter" param="[Parameters].[Provider]" />
+            <card type="parameter" param="[Parameters].[Department]" />
+            <card type="parameter" param="[Parameters].[Window]" />
+          </strip>
+        </edge>
+        <edge name="top">
+          <strip size="30">
+            <card type="columns" />
+          </strip>
+          <strip size="30">
+            <card type="rows" />
+          </strip>
+          <strip size="30">
+            <card type="title" />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint />
+    </window>
+    <window class="dashboard" maximized="true" name="Hospital performance">
+      <viewpoints>
+        <viewpoint name="Monthly performance" />
+        <viewpoint name="Monthly attendances" />
+        <viewpoint name="Provider comparison" />
+      </viewpoints>
+      <active id="2" />
+      <device-preview />
+    </window>
+  </windows>
+</workbook>

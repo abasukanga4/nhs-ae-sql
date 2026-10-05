@@ -1,50 +1,59 @@
-# Reuse the reporting data in Tableau
+# Native Tableau workbook
 
-This repository includes an export and calculation guide, **not a completed Tableau workbook**. The interactive application is built with Streamlit. The exported files are public aggregate data suitable for a separate Tableau practice workbook.
+Download **[Hospital Performance Explorer.twbx](../bi/Hospital%20Performance%20Explorer.twbx)** and open it in Tableau Public/Desktop. The packaged workbook includes the public CSV and a **Hyper extract**, so it does not need an account, database credentials or a connection to this computer to read the data. It does not need to be published to Tableau Public to open locally.
 
-## Connect
+The checked snapshot covers **April 2024–March 2026** and contains **4,758 provider-months**. The workbook was opened in Tableau Public **2026.2.3 on Apple silicon** and all three charts rendered. The portable source uses the older 10.5 workbook format; Tableau displays an upgrade notice on first opening. Accepting that notice converts the document locally.
 
-1. Connect Tableau to the text file `data/demo/providers.csv`.
-2. Set `period_month` to Date, `org_code` / `org_name` / `region` to String, and attendance/wait columns to whole numbers.
-3. Use the provider table alone. Do not union `national.csv` into it: doing so would double-count England activity. For a national reference, use a separate worksheet/data source or an explicit monthly relationship with a documented level of detail.
-4. Filter to one provider code, or clearly label a multi-provider aggregate. Use code rather than name as the longitudinal identifier; review reorganisations separately.
+## Views and controls
 
-## Calculated fields
+- **Monthly performance:** the percentage of attendances completed within four hours, calculated from summed counts.
+- **Monthly attendances:** the activity denominator for the same selection.
+- **Provider comparison:** weighted performance over the selected window, listed alphabetically by organisation code. This is not a ranked hospital league table.
+- **Provider code:** all providers or an individual reporting organisation. Look up codes in [providers.csv](../data/demo/providers.csv); names can change over time.
+- **Department type:** major A&E (Type 1) or all A&E types.
+- **Reporting window:** latest 12 months (April 2025–March 2026) or the full 24-month snapshot.
 
-**Type 1 within four hours** (format as Percentage):
+The default is all providers, Type 1 and the latest 12 months. Organisations with no activity in the selected department are excluded from the charts. Provider organisations can cover multiple sites. A name or code is not proof that an organisation's boundaries stayed unchanged.
+
+The [Streamlit dashboard](../README.md#explore-it) provides the fuller reporting workflow, including briefing exports and complete-year comparisons. This native workbook is a separate, portable BI view of the same checked provider data.
+
+## Metric definition
+
+The calculated field returns a fraction and uses Tableau percentage formatting:
 
 ```text
-IF SUM([att_type1]) > 0 THEN
-    1 - SUM([over4hr_type1]) / SUM([att_type1])
+IF SUM([Selected attendances]) > 0 THEN
+    1 - SUM([Selected over four hours]) / SUM([Selected attendances])
 END
 ```
 
-**All types within four hours** (format as Percentage):
+It **does not average provider percentages**. Four hours means arrival to admission, transfer or discharge, not time to first assessment. The view uses provider rows only; adding the national rows would double-count activity. Comparisons are historical, descriptive and not adjusted for case mix.
 
-```text
-IF SUM([att_all]) > 0 THEN
-    1 - SUM([over4hr_all]) / SUM([att_all])
-END
+## Reconciliation and review
+
+| Selection | Attendances | Within four hours |
+|---|---:|---:|
+| All providers, Type 1, April 2025–March 2026 | 16,744,864 | 60.556473% |
+| All providers, all types, April 2025–March 2026 | 26,969,593 | 74.366024% |
+| All providers, Type 1, March 2026 | 1,451,010 | 63.888188% |
+
+Automated checks compare every Hyper extract value against the reporting CSV, check the packaged relative paths, verify unique provider-month records and reconcile the default annual totals. The native smoke test confirmed the embedded data loaded and the charts rendered. **Interactive control click-through remains a review item:** the desktop automation connection stopped responding during that check. It is not recorded as a passed interaction test. Current evidence is in [validation.json](../bi/validation.json).
+
+For a manual acceptance check, switch to all types and confirm the monthly counts increase; select an active provider such as R1H and confirm the comparison has one row; switch to the full window and confirm there are 24 monthly marks. Restore the default selection before saving.
+
+## Rebuild
+
+Use Python 3.12 and the pinned official Tableau Hyper API:
+
+```bash
+pip install -r requirements-dev.txt -r requirements-bi.txt
+python scripts/build_extract.py
+python scripts/build_tableau.py
+pytest -q
 ```
 
-Use summed counts at the view's level of detail. Do not use `AVG([perf_type1])` to combine months or providers. These formulas return fractions; formatting as a percentage is sufficient, without also multiplying by 100.
+The builder packages relative paths and a fixed archive timestamp. Rebuilding the Hyper file can change its internal binary metadata while preserving the checked table values. `build-checks.json` records automatic checks; `validation.json` is a separate dated review record, so a build does not silently overwrite native review evidence.
 
-For the two-year comparison, connect separately to `reports/provider_comparison.csv`. `perf_prior_pct` and `perf_latest_pct` already contain values on a **0–100 scale**: format as numbers with a `%` suffix, not Tableau's percentage format. `recovery_pp` is a difference in percentage points, not a percent change. This exported table has the default 60,000-attendances rule applied to both complete years.
+The workbook, CSV and extract contain only published aggregate data. There are no patient records, credentials or private filesystem paths.
 
-## Suggested dashboard
-
-- Provider and date filters.
-- Three KPI cards: attendances, within-four-hour percentage, over-four-hour count.
-- A monthly line chart and an attendance bar chart with aligned dates.
-- A comparison sheet using the precomputed complete-year table, with both denominators shown in its tooltip.
-- A visible definition/source note and the historical snapshot dates.
-
-A date filter changes the KPI aggregation but should not silently redefine the precomputed annual comparison. Label the fixed annual windows beside that sheet.
-
-## Reconcile before sharing
-
-With all providers included, Type 1, April 2025–March 2026, check **16,744,864 attendances** and **60.556473% within four hours**. For March 2026 alone, check **1,451,010 attendances** and **63.888188%**. Match these to the separate national SQL output before styling the workbook. Do not add the national rows to the provider rows.
-
-For missing dates, a Tableau table calculation based on previous rows can compare the wrong period. This project's SQL output already performs a calendar-date join; use its exported `yoy_pp` for a selected provider or create a properly tested date scaffold before rebuilding that logic in Tableau.
-
-References: Tableau's official [calculated fields](https://help.tableau.com/current/pro/desktop/en-us/calculations_calculatedfields_formulas.htm) and [aggregate calculations](https://help.tableau.com/current/pro/desktop/en-us/calculations_calculatedfields_aggregate_create.htm) documentation.
+References: Tableau's official [packaged workbooks](https://help.tableau.com/current/pro/desktop/en-us/save_savework_packagedworkbooks.htm), [aggregate calculations](https://help.tableau.com/current/pro/desktop/en-us/calculations_calculatedfields_aggregate_create.htm) and [Hyper API](https://tableau.github.io/hyper-db/docs/) documentation.
