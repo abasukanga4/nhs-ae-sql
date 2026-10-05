@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "reporting_months": 24,
+  "source_files": 24,
+  "raw_rows": 4782,
+  "provider_rows": 4758,
+  "national_rows": 24,
+  "national_reconciliation_checks": 144,
+  "national_reconciliation_failures": 0,
+  "notices": [
+    "2024-09: 6 trailing columns verified empty in every data row"
+  ],
+  "manifest_sha256": "d2620e83d5fa7e8728a48c104bd520f99430b631c7701d613fbed37c8d22eeaf",
+  "checks": [
+    "source hashes",
+    "column order",
+    "row widths",
+    "nonnegative integer counts",
+    "breaches no greater than attendances",
+    "unique organisation/month keys",
+    "source period agrees with manifest",
+    "complete month sequence",
+    "one national total per month",
+    "provider/national reconciliation"
+  ],
+  "database_sha256": "4d2125b2a6243db52fc257959f644510c55eb468f5edc135d2a8ebd4d60409af"
+}

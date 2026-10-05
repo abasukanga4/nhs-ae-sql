@@ -1,21 +1,16 @@
 -- ============================================================================
 -- 01_schema.sql — table definitions for the NHS A&E analytics database
 -- ============================================================================
--- Design: a classic staging -> clean split.
---   * stg_ae_raw : one wide, all-VARCHAR staging table. Every raw CSV is
---                  appended here verbatim (plus a `source_label` = YYYY-MM
---                  taken from the FILENAME, not the file's Period column).
---                  All-VARCHAR because the source is untyped text and one
---                  file (2024-09) carries junk trailing columns; we keep the
---                  raw ingest permissive and do all typing in 02_cleaning.sql.
---   * ae_provider / ae_national : typed, deduplicated, analysis-ready tables
---                  built by 02_cleaning.sql.
+-- Strict Python validation precedes this staging -> typed split. The canonical
+-- source columns are retained as text after whitespace/count normalization.
+-- Unknown populated columns, missing counts and duplicate keys fail the build;
+-- no rows are skipped or silently deduplicated. Empty surplus CSV columns are
+-- explicitly checked and recorded in reports/quality.json.
 --
--- Why the month comes from the filename, not the CSV `Period` column:
---   the national TOTAL row does NOT reliably carry a parseable Period
---   (e.g. most files put the literal string "TOTAL" in the Period cell).
---   The filename label (e.g. 2024-04) is authoritative and set by us in
---   data/raw/download.sh, so it is the single source of truth for the month.
+-- source_label comes from the pinned manifest month. Provider Period values
+-- must match it. The national TOTAL row does not carry a reporting date.
+-- The typed tables are built in a temporary database and published only after
+-- all six reporting measures reconcile with the national total every month.
 -- ============================================================================
 
 -- Fresh build every run so the pipeline is deterministic and idempotent.

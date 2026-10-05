@@ -1,112 +1,94 @@
-# NHS A&E 4-hour performance — a SQL-first recovery & seasonality analysis
+# Hospital performance explorer
 
-> **Which acute NHS trusts are recovering fastest on the 4-hour A&E standard, and is winter pressure structural or seasonal?**
+[![Checks](https://github.com/abasukanga4/nhs-ae-sql/actions/workflows/checks.yml/badge.svg)](https://github.com/abasukanga4/nhs-ae-sql/actions/workflows/checks.yml)
 
-A DuckDB + SQL analysis of NHS England's monthly, provider-level A&E data,
-**April 2024 – March 2026** (24 months, ~200 providers each). The analytical
-work is done in SQL; Python is thin glue only (load the CSVs, run the SQL,
-draw the charts). Framed for an NHS acute operations manager.
+**An A&E reporting dashboard with SQL analysis, traceable source files and checks that stop invalid data entering the report.**
 
-## TL;DR (full write-up in [`MEMO.md`](MEMO.md))
+How has time in A&E changed across England, how do patterns vary between providers, and what should an operational analyst investigate next?
 
-- **Recovering, modestly and broadly.** National all-types 4-hour performance
-  rose **73.3% → 74.4%** (latest 12 months vs prior 12); March 2026 (**76.6%**)
-  is the best month in the series.
-- **Unevenly.** Of 113 acute Type 1 trusts, **77 improved, 36 declined** YoY.
-  Fastest: **Princess Alexandra +18.4pp** (Type 1 49% → 67%). Worst:
-  **Ashford & St Peter's −16.0pp**.
-- **Winter is seasonal, and easing — not a structural ratchet.** The winter
-  (Dec–Feb) average rose **71.9% → 72.8%** across the two winters, the floor
-  lifted (worst month 70.5% → 71.8%), and each dip recovers the following
-  spring.
-- **Track Type 1.** The all-types headline (~74%) sits ~14 points above Type 1
-  (~60%); the target bites in the major departments.
+This independent portfolio study uses NHS England's **public, aggregate monthly data for April 2024–March 2026**: 24 source files and 4,758 provider-month records. It is a reproducible historical snapshot, not a live NHS service or an analysis of patient records.
 
-## Figures
+![Hospital performance dashboard](docs/dashboard.png)
 
-**National 4-hour performance — monthly, rolling 3-month average, winter shaded**
-![National 4-hour performance](figures/national_4hr_performance.png)
+**[Findings brief](MEMO.md) · [Metric definitions and validation](docs/METHODS.md) · [Tableau guide](docs/TABLEAU.md) · [Two-minute walkthrough](docs/WALKTHROUGH.md)**
 
-**Fastest-recovering acute trusts (Type 1, latest 12 vs prior 12 months)**
-![Top 10 fastest recovery](figures/top10_fastest_recovery.png)
+## Explore it
 
-**Winter vs rest-of-year — the winter floor is rising, not ratcheting down**
-![Winter vs rest of year](figures/winter_vs_rest.png)
-
-## Reproduce it
-
-Requires Python 3.9+ with the pinned packages. No DuckDB CLI needed — SQL runs
-through the DuckDB Python module.
+Python **3.12** is used in CI. The checked-in, verified aggregate snapshot runs without an API key or a download step.
 
 ```bash
-pip install -r requirements.txt   # duckdb==1.4.5 pandas==2.3.3 matplotlib==3.9.4 pytest==8.4.2
-
-bash data/raw/download.sh          # fetch the 24 monthly CSVs from NHS England
-python3 load.py                    # build data/nhs.duckdb (schema -> ingest -> clean)
-python3 run_analysis.py            # run the analysis SQL, render figures/*.png
-pytest                             # 5 data-quality checks against the built DB
+git clone https://github.com/abasukanga4/nhs-ae-sql.git
+cd nhs-ae-sql
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+streamlit run app.py
 ```
 
-The raw CSVs and the built `.duckdb` are **git-ignored**;
-`data/raw/download.sh` plus the SQL fully reproduce everything.
+Open the local URL shown by Streamlit. On Windows, activate with `.venv\Scripts\activate`.
 
-## How it's built
+- **Performance & briefing:** choose a provider, Type 1 or all A&E types, and 6/12/24 months; inspect monthly and volume-weighted trends; export the selected data and a briefing.
+- **Compare providers:** compare two complete years of Type 1 reporting, with region and activity filters, visible denominators and a downloadable table.
+- **Data checks & methods:** inspect the exact source URLs, hashes, validation rules and reconciliation results.
 
+## A finding worth discussing
+
+Across **England**, the proportion of Type 1 attendances completed within four hours was **60.56% in April 2025–March 2026**, versus **58.98% in the preceding year**: **+1.58 percentage points**. Type 1 attendance volume rose from **16.40 million to 16.74 million** across those windows.
+
+The all-types annual measure was **74.37%**, showing why department definitions matter when interpreting a headline KPI. The dashboard lets a user explore any reporting provider and compare like-for-like periods rather than centring the analysis on one hospital or vacancy.
+
+These are descriptive observations, not proof that an intervention worked. The [findings brief](MEMO.md) explains the national context and questions an operational reporting team could investigate.
+
+![England Type 1 and all-types trends](figures/type1_trend.png)
+
+## What the implementation demonstrates
+
+| Reporting task | Implementation |
+|---|---|
+| Make an extract repeatable | A manifest pins 24 official source URLs, reporting months and SHA-256 hashes. |
+| Prevent silent data loss | Strict CSV schema, row-width, count, period and duplicate checks; unexpected values fail the build. |
+| Reconcile published outputs | Six provider-level count measures reconcile with England totals in every month: **144 checks**. |
+| Calculate defensible KPIs | SQL derives rates from summed counts, matches calendar months for year-on-year comparisons and handles zero denominators. |
+| Produce useful comparisons | Complete-year and activity rules, latest organisation names, name-change flags and explicit interpretation limits. |
+| Deliver a report | Filterable dashboard, CSV exports, an operational brief and Tableau calculation instructions. |
+| Maintain the work | Automated tests, continuous integration and a previous database preserved when a new build fails. |
+
+The dashboard uses **Streamlit and Plotly**. The Tableau deliverable is currently an export dataset and build guide; a native Tableau workbook is not included.
+
+## Rebuild from official sources
+
+```bash
+# Inside the activated environment:
+python load.py --download     # download, validate, reconcile, then replace the database
+python run_analysis.py        # export the checked dashboard snapshot, findings and chart
+pip install -r requirements-dev.txt
+ruff check .
+ruff format --check .
+pytest -q
 ```
-nhs-ae-sql/
-├── data/raw/download.sh          # curl the 24 NHS England CSVs (URLs + retrieval date)
-├── load.py                       # thin glue: schema -> ingest CSVs -> cleaning SQL
-├── run_analysis.py               # thin glue: run analysis SQL -> matplotlib figures
-├── sql/
-│   ├── 01_schema.sql             # staging (all-VARCHAR) + typed clean tables
-│   ├── 02_cleaning.sql           # parse Period->DATE, split TOTAL, cast, derive metrics
-│   ├── 03_analysis_recovery.sql  # YoY recovery leaderboard (the star)
-│   └── 03_analysis_seasonality.sql # national trace + winter-vs-rest
-├── tests/test_load.py            # pytest data-quality suite
-├── figures/                      # rendered PNGs (committed)
-├── MEMO.md                       # one-page findings for an ops manager
-├── requirements.txt              # pinned versions
-└── README.md
+
+`python load.py` reuses local source files. Raw CSVs and the built database are ignored by Git. Source files may be revised or removed by the publisher: a hash mismatch stops the build and requires an explicit review of the revision. It never silently changes the historical result.
+
+The export step checks the database and manifest against the quality report. The dashboard verifies hashes of its committed input files before loading them. These hashes detect inconsistent files; they do not establish that the publisher's underlying returns are error-free.
+
+## Project layout
+
+```text
+app.py                       Interactive reporting dashboard
+nhs_ae/pipeline.py           Source validation and atomic database publication
+nhs_ae/reporting.py          Shared SQL reporting functions
+sql/                        Staging, typed tables and analytical queries
+load.py                     Download/build command
+run_analysis.py             Reproducible exports, chart and findings
+data/source_manifest.json   Official source URLs and hashes
+data/demo/                  Public aggregate snapshot used by the dashboard
+reports/                    Quality report, findings and provider comparison
+docs/                       Methods, Tableau guide and walkthrough
+tests/                      Failure cases, metric behaviour and app smoke tests
 ```
 
-**Data model.** Every raw CSV lands in one all-VARCHAR staging table tagged
-with its filename month. `02_cleaning.sql` then types every measure
-defensively (strips thousands separators, blanks → NULL via `TRY_CAST`),
-parses the reporting month from the **filename** (the national TOTAL row does
-not carry a reliable `Period` value), splits the single England `TOTAL` row
-into a national table, and derives `perf = 1 − breaches/attendances` for both
-all-types and Type 1. Natural key: `(period_month, org_code)`.
+## Interpretation and scope
 
-**SQL techniques on show.**
-- `03_analysis_recovery.sql` — 5 layered CTEs; conditional aggregation with
-  `FILTER` to pivot the two 12-month windows; volume-weighted window
-  performance; `RANK()`, `DENSE_RANK()`, and `NTILE(4)` for the recovery
-  leaderboard and quartile bands.
-- `03_analysis_seasonality.sql` — rolling 3-month average via
-  `AVG(...) OVER (... ROWS BETWEEN 2 PRECEDING AND CURRENT ROW)`; `LAG(...,12)`
-  for year-on-year deltas; `LEAD(...)` for the next-month recovery check;
-  `PERCENT_RANK()` to place each month in the distribution; and
-  `PERCENTILE_CONT(0.5)` for the winter-vs-rest median.
+Four hours means **arrival to admission, transfer or discharge**, not time to first assessment. Provider organisations can cover multiple hospital sites; attendances are visits, not unique people. Comparisons are descriptive and not adjusted for case mix. A stable organisation code does not rule out a reorganisation. Two winters are insufficient to infer a long-term structural trend or establish causality.
 
-## Honest limitations
-- Many months are NHS England **revised** republications; figures are
-  point-in-time and can change with later revisions. Each source file is
-  pinned in `download.sh` for reproducibility.
-- **Provider mix drifts** (198–202 sites/month) as trusts open/close/merge;
-  the recovery ranking requires ≥60k Type 1 attendances in *both* years to
-  reduce noise, but renamed/merged trusts can still distort single-trust
-  trends.
-- **All-types vs Type 1 are different questions** — don't mix them. Recovery is
-  ranked on Type 1 (the target); the national seasonality view is all-types.
-- Performance excludes zero-attendance provider-months and volume-weights the
-  window aggregates by design (a large department counts more than a small one).
-
-## Status
-Local analysis project — **not published**, no live remote. All commits are
-local. Data © NHS England, licensed under the Open Government Licence;
-retrieved 2026-07-08 from the
-[A&E waiting times and activity](https://www.england.nhs.uk/statistics/statistical-work-areas/ae-waiting-times-and-activity/)
-statistical work area.
-
-
-**Staging note:** the raw layer ingests every column NHS England publishes (including booked-appointment and emergency-admission counts) for fidelity; the clean layer deliberately consumes only the attendance and 4-hour-breach subset used by the analysis.
+Source: [NHS England A&E Attendances and Emergency Admissions](https://www.england.nhs.uk/statistics/statistical-work-areas/ae-waiting-times-and-activity/), retrieved **5 October 2026**. Contains public sector information licensed under the [Open Government Licence v3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/). This project is independent of NHS England; no endorsement is implied.

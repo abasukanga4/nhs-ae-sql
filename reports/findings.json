@@ -1,0 +1,24 @@
+{
+  "snapshot_end": "2026-03-01",
+  "providers_compared": 113,
+  "improved": 77,
+  "declined": 36,
+  "unchanged": 0,
+  "england_latest_type1_pct": 63.8881882275105,
+  "england_latest_type1_yoy_pp": 3.279121323929644,
+  "england_latest_all_types_pct": 76.63347859758683,
+  "england_annual_comparison": [
+    {
+      "window": "April 2024\u2013March 2025",
+      "type1_attendances": 16396174.0,
+      "type1_within_4h_pct": 58.97528899120002,
+      "all_types_within_4h_pct": 73.31535039572512
+    },
+    {
+      "window": "April 2025\u2013March 2026",
+      "type1_attendances": 16744864.0,
+      "type1_within_4h_pct": 60.5564727190379,
+      "all_types_within_4h_pct": 74.36602398857113
+    }
+  ]
+}

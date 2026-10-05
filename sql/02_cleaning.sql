@@ -2,26 +2,20 @@
 -- 02_cleaning.sql — transform staging text into typed, analysis-ready tables
 -- ============================================================================
 -- Runs AFTER load.py has populated stg_ae_raw from all 24 CSVs.
--- Everything here is set-based SQL; load.py adds no transform logic.
+-- The Python ingestion boundary validates and normalizes source text first.
 --
 -- Responsibilities:
 --   1. Parse the reporting month as a real DATE (from the filename label).
---   2. Cast text measures to integers defensively (strip thousands commas,
---      treat blanks as NULL) even though the current source is plain ints —
---      this makes the pipeline robust to the formatting the brief warned about.
+--   2. Cast validated count strings strictly; conversion errors stop the build.
 --   3. Split the single national TOTAL row out from the provider rows.
 --   4. Derive the 4-hour performance metrics = 1 - breaches / attendances.
 -- ============================================================================
 
 -- ----------------------------------------------------------------------------
--- Reusable macros. to_int handles the defensive casting once, everywhere:
---   * NULLIF(trim(x),'')     -> blank / whitespace becomes NULL
---   * replace(...,',','')    -> strip thousands separators if ever present
---   * TRY_CAST ... AS BIGINT -> anything still unparseable becomes NULL
---     rather than throwing, so one dirty cell can't abort the whole load.
+-- Reusable strict cast. Missing/malformed counts fail at the Python boundary;
+-- values outside BIGINT capacity also fail here rather than becoming NULL.
 -- ----------------------------------------------------------------------------
-CREATE OR REPLACE MACRO to_int(x) AS
-    TRY_CAST(replace(NULLIF(trim(x), ''), ',', '') AS BIGINT);
+CREATE OR REPLACE MACRO to_int(x) AS CAST(x AS BIGINT);
 
 -- month_of turns our 'YYYY-MM' filename label into the first-of-month DATE.
 CREATE OR REPLACE MACRO month_of(label) AS
@@ -42,22 +36,21 @@ WITH typed AS (
         trim(org_name)                               AS org_name,
         upper(trim(org_code)) = 'TOTAL'              AS is_total,
         to_int(att_type1)                            AS att_type1,
-        -- all-types attendances = Type 1 + Type 2 + Other; COALESCE so a NULL
-        -- component doesn't null the whole sum.
-        COALESCE(to_int(att_type1), 0)
-          + COALESCE(to_int(att_type2), 0)
-          + COALESCE(to_int(att_other), 0)           AS att_all,
+        -- Unplanned attendances only. Missing counts must never be changed to zero.
+        to_int(att_type1)
+          + to_int(att_type2)
+          + to_int(att_other)           AS att_all,
         to_int(over4hr_type1)                        AS over4hr_type1,
-        COALESCE(to_int(over4hr_type1), 0)
-          + COALESCE(to_int(over4hr_type2), 0)
-          + COALESCE(to_int(over4hr_other), 0)       AS over4hr_all,
+        to_int(over4hr_type1)
+          + to_int(over4hr_type2)
+          + to_int(over4hr_other)       AS over4hr_all,
         to_int(waited_4_12hr_dta)                    AS waited_4_12hr_dta,
         to_int(waited_12hr_dta)                      AS waited_12hr_dta
     FROM stg_ae_raw
 )
 SELECT
     *,
-    -- 4-hour performance = share of attendances seen within 4 hours.
+    -- 4-hour performance = share with total time in department at most 4 hours.
     -- Guard the denominator: NULL (not divide-by-zero) when attendances = 0,
     -- e.g. a site reporting only booked/other activity in a given month.
     CASE WHEN att_all   > 0 THEN 1.0 - over4hr_all   / att_all::DOUBLE   END AS perf_all,
