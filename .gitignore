@@ -16,3 +16,6 @@ venv/
 .DS_Store
 
 .ruff_cache/
+
+# Tableau session recovery files are local, not reviewed deliverables.
+*.twbr
