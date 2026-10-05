@@ -2,7 +2,7 @@
 
 **Question:** how has reported time in A&E changed nationally, how much variation is visible between providers, and what should be investigated next?
 
-**Scope:** NHS England aggregate returns, April 2024–March 2026. An independent historical analysis for an operational reporting audience, designed to work across England rather than for a particular trust. Findings are reproduced in `reports/findings.json` and `reports/provider_comparison.csv` by `python run_analysis.py`.
+**Scope:** NHS England aggregate returns, April 2024–March 2026. An independent historical analysis of national and provider-level trends for an operational reporting audience. Findings are reproduced in `reports/findings.json` and `reports/provider_comparison.csv` by `python run_analysis.py`.
 
 ## National findings
 

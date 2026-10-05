@@ -35,7 +35,7 @@ Open the local URL shown by Streamlit. On Windows, activate with `.venv\Scripts\
 
 Across **England**, the proportion of Type 1 attendances completed within four hours was **60.56% in April 2025–March 2026**, versus **58.98% in the preceding year**: **+1.58 percentage points**. Type 1 attendance volume rose from **16.40 million to 16.74 million** across those windows.
 
-The all-types annual measure was **74.37%**, showing why department definitions matter when interpreting a headline KPI. The dashboard lets a user explore any reporting provider and compare like-for-like periods rather than centring the analysis on one hospital or vacancy.
+The all-types annual measure was **74.37%**, showing why department definitions matter when interpreting a headline KPI. The dashboard lets a user explore any reporting provider and compare like-for-like periods.
 
 These are descriptive observations, not proof that an intervention worked. The [findings brief](MEMO.md) explains the national context and questions an operational reporting team could investigate.
 
