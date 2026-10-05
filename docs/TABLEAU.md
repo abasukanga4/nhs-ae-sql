@@ -17,6 +17,8 @@ The default is all providers, Type 1 and the latest 12 months. Organisations wit
 
 The [Streamlit dashboard](../README.md#explore-it) provides the fuller reporting workflow, including briefing exports and complete-year comparisons. This native workbook is a separate, portable BI view of the same checked provider data.
 
+![Workbook opened in Tableau Public](tableau-dashboard.png)
+
 ## Metric definition
 
 The calculated field returns a fraction and uses Tableau percentage formatting:
@@ -37,9 +39,9 @@ It **does not average provider percentages**. Four hours means arrival to admiss
 | All providers, all types, April 2025–March 2026 | 26,969,593 | 74.366024% |
 | All providers, Type 1, March 2026 | 1,451,010 | 63.888188% |
 
-Automated checks compare every Hyper extract value against the reporting CSV, check the packaged relative paths, verify unique provider-month records and reconcile the default annual totals. The native smoke test confirmed the embedded data loaded and the charts rendered. **Interactive control click-through remains a review item:** the desktop automation connection stopped responding during that check. It is not recorded as a passed interaction test. Current evidence is in [validation.json](../bi/validation.json).
+Automated checks compare every Hyper extract value against the reporting CSV, check the packaged relative paths, verify unique provider-month records and reconcile the default annual totals. The native acceptance check confirmed that all three charts rendered; switching department type recalculated the views; selecting provider R1H reduced the comparison to one row; and the full-window option displayed 24 monthly bars. Defaults were then restored. The dated check record is in [validation.json](../bi/validation.json).
 
-For a manual acceptance check, switch to all types and confirm the monthly counts increase; select an active provider such as R1H and confirm the comparison has one row; switch to the full window and confirm there are 24 monthly marks. Restore the default selection before saving.
+To repeat the acceptance check, switch to all types and confirm the monthly counts increase; select an active provider such as R1H and confirm the comparison has one row; switch to the full window and confirm there are 24 monthly marks. Restore the default selection before saving.
 
 ## Rebuild
 

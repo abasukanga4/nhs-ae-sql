@@ -1,20 +1,23 @@
 {
   "reviewed_at": "2026-10-05",
   "application": "Tableau Public 2026.2.3, Apple silicon",
-  "status": "Native charts and data loading verified; interactive control click-through incomplete",
+  "status": "Passed: native rendering, interactive controls and packaged-data checks",
   "verified": [
     "Packaged Hyper data opened without database credentials",
     "Monthly performance, monthly attendances and provider comparison rendered",
     "Latest 12-month window rendered",
-    "No null provider badge after excluding zero-activity providers"
+    "No null provider badge after excluding zero-activity providers",
+    "Department changed from Type 1 to All types and charts recalculated",
+    "Provider changed from All providers to R1H; comparison reduced to one provider",
+    "Full 24 months displayed 24 monthly attendance bars",
+    "All providers, Type 1, Latest 12 months restored"
   ],
   "automated_checks": [
     "Each Hyper value matches the reporting CSV",
     "Weighted annual totals and package portability",
     "All worksheets have visual representations"
   ],
-  "remaining": [
-    "Verify live dropdown changes for provider, department and reporting window; desktop connection timed out during this check"
-  ],
-  "workbook_sha256": "b406e59c43e5c5321f25ce8b22155f7a044776d3231521f63d344d0ae24b667d"
+  "remaining": [],
+  "workbook_sha256": "b406e59c43e5c5321f25ce8b22155f7a044776d3231521f63d344d0ae24b667d",
+  "automated_tests_passed": 34
 }

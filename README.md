@@ -53,7 +53,7 @@ These are descriptive observations, not proof that an intervention worked. The [
 | Deliver a report | Streamlit dashboard, native Tableau workbook with an embedded Hyper extract, CSV exports and an operational brief. |
 | Maintain the work | Automated tests, continuous integration and a previous database preserved when a new build fails. |
 
-The web dashboard uses **Streamlit and Plotly**. A **native Tableau packaged workbook** is also included with three reporting sheets and the public extract. Its charts were opened in Tableau Public 2026.2.3; the [Tableau guide](docs/TABLEAU.md#reconciliation-and-review) distinguishes completed data/render checks from the remaining interaction review.
+The web dashboard uses **Streamlit and Plotly**. A **native Tableau packaged workbook** is also included with three reporting sheets and the public extract. Its charts and provider, department and reporting-window controls were checked in Tableau Public 2026.2.3. The [Tableau guide](docs/TABLEAU.md#reconciliation-and-review) records the acceptance checks and reconciled totals.
 
 ## Rebuild from official sources
 
